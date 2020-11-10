@@ -1,0 +1,59 @@
+﻿@model IEnumerable<FinalProgramacion.ViewModel.Reporte>
+@{
+    ViewBag.Title = "Reporte";
+}
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div>
+            <h1>
+                Promedio de examenes aprobados por nivel
+            </h1>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-lg-6">
+
+        <table class="table table-bordered table-striped">
+
+            <thead>
+                <tr class="success">
+                    <th class="text-center">
+                        Nivel
+                    </th>
+                    <th class="text-center">
+                        Promedio
+                    </th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var Reporte in Model )
+                {
+                    <tr class="text-center">
+                        <td>
+                            @Reporte.nivelR
+
+                        </td>
+                        <td>
+                            @Reporte.promedio
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+

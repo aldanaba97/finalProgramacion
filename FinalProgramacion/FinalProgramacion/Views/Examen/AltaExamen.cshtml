@@ -1,0 +1,77 @@
+﻿@model FinalProgramacion.Models.examen
+@{
+    ViewBag.Title = "AltaExamen";
+    List<SelectListItem> ItemsMateria = (List<SelectListItem>)ViewBag.item;
+   
+
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div>
+            <h1>Alta de un examen </h1>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm())
+
+{
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-6 control-label">Fecha del examen: </label>
+                    <div class="col-sm-6">
+                        @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form control", @id = "txtFecha" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-6 control-label">Materia:  </label>
+                    <div class="col-sm-6">
+                        @Html.DropDownList("materia", ItemsMateria, "Seleccione materia", htmlAttributes: new { @class = "form-control", @id= "combo"});
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-6 control-label">Nota: </label>
+                    <div class="col-sm-6">
+                        @Html.EditorFor(model => model.Nota,new { htmlAttributes = new { @class = "form control", @id = "txtNota" } })
+                    </div>
+                </div>
+
+                <div class="form-group text-right">
+                    <div class="col-xs-12">
+                        <button class="btn btn-success" type="submit" onclick="validar()">
+                            Guardar examen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function validar() {
+
+     
+        let fecha = document.getElementById("txtFecha");
+        let materia = document.getElementById("combo");
+        let nota = document.getElementById("txtNota");
+
+      
+  
+        if (fecha.value === "") {
+            alert("Ingrese fecha");
+            return false;
+        }
+        if (materia.value === "") {
+            alert("Seleccione una materia")
+            return false
+        }
+        if (nota.value === "") {
+            alert("Ingrese una nota");
+            return false;
+        }
+        return alert("Usuario cargado");
+    }
+</script>
